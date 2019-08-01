@@ -2,11 +2,15 @@
   "name": "syndicate",
   "version": "0.1.0",
   "private": true,
+  "main": "server/index.js",
+  "proxy": "http://localhost:3000",
   "dependencies": {
     "babel-eslint": "^9.0.0",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "massive": "^5.11.2",
     "nodemon": "^1.19.1",
     "react": "^16.8.6",
@@ -21,7 +25,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

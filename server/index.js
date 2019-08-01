@@ -1,31 +1,59 @@
-const express = require("express");
-const cors = require("cors");
-const { json } = require("body-parser");
+const secrets = require('./secrets.js');
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const controller = require("./controller.js");
 const massive = require('massive');
-
-
-const ctrl = require("./controller.js");
+const cors = require('cors');
 
 const app = express();
 app.use(cors());
-app.use(json());
+app.use(bodyParser.json());
 
-
-
-const secrets = require('./secrets.js');
-var connectionString = secrets.connectionString
-
-massive(connectionString)
-  .then(db => {
-    app.set("db", db);
-  })
-  .catch(console.log);
-
- 
 const PORT = 3001;
 
-// app.get('/api/volumes', ctrl.getAllVolumes);
+const{ CONNECTION_STRING } = secrets;
  
-app.listen(PORT || 3001, () => {
-  console.log(`App listening on port ${PORT || 3001}!`);
+massive(CONNECTION_STRING)
+.then(db => {
+ app.set('db', db)
+ console.log('Database is connected')
+})
+.catch((err) => console.error('Database connection error', err))
+ 
+ 
+app.get('/api/guilds', controller.getAllGuilds);
+
+app.listen(PORT, () => {
+ console.log(`Server connected and running on port ${PORT}`)
 });
+
+
+
+// const secrets = require('./secrets.js');
+
+// const express = require('express');
+// const bodyParser = require('body-parser');
+// const controller = require('./controller.js');
+// const massive = require('massive');
+// const cors = require('cors');
+
+// const app = express();
+
+// const{ CONNECTION_STRING, PORT, SESSION_SECRET, } = secrets
+
+// massive(CONNECTION_STRING)
+// .then(dbInstance => {
+//     app.set('db', dbInstance)
+//     // console.log('Database is connected')
+// })
+// .catch((err) => console.error('Database connection error', err))
+
+// app.use(cors());
+// app.use(bodyParser.json());
+
+// app.get('/api/all-features', controller.getAllGuilds)
+
+// app.listen(PORT, () => {
+//     console.log(`Server connected and running on port ${PORT}`)
+// });
