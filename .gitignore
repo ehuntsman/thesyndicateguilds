@@ -4,7 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-/server/secrets.js
 
 # testing
 /coverage
@@ -13,11 +12,13 @@
 /build
 
 # misc
+/server/secrets.js
 .DS_Store
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env
 
 npm-debug.log*
 yarn-debug.log*

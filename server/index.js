@@ -1,4 +1,4 @@
-const secrets = require('./secrets.js');
+require('dotenv').config()
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -8,11 +8,12 @@ const cors = require('cors');
 
 const app = express();
 
+const{ CONNECTION_STRING, SERVER_PORT, SESSION_SECRET, } = process.env;
 
-massive(secrets.CONNECTION_STRING)
+massive(CONNECTION_STRING)
 .then(dbInstance => {
     app.set('db', dbInstance)
-    console.log('Database is connected', dbInstance)
+    console.log('Database is connected')
 })
 .catch((err) => console.error('Database connection error', err))
 
@@ -21,8 +22,6 @@ app.use(bodyParser.json());
 
 app.get('/api/guilds', controller.getAllGuilds);
 
-// app.get('/api/all-features', controller.getAllFeatures)
-
-app.listen(secrets.PORT, () => {
-    console.log(`Server connected and running on port ${secrets.PORT}`)
+app.listen(SERVER_PORT, () => {
+    console.log(`Server connected and running on port ${SERVER_PORT}`)
 });
