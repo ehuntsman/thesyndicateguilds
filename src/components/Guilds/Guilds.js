@@ -15,7 +15,7 @@ export default class Guilds extends Component {
   }
 
   getAllGuilds = () => {
-    axios.get('http://localhost:8000/api/all-guilds')
+    axios.get('/api/all-guilds')
         .then((response) => {
             this.setState({ guilds: response.data })
             console.log(this.state)

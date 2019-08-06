@@ -7,7 +7,8 @@ module.exports = {
   // auth0Callback: 'http://localhost:3000/auth/callback',
   // authRedirect: 'http://localhost:3001/#myteam',
   // logoutredirect: 'http://localhost:3001/',
-  SERVER_PORT: 8000
+  SERVER_PORT: 8000,
+  HOST: "thesyndicateguilds.herokuapp.com"
 }
 
 
