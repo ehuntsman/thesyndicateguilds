@@ -7,7 +7,7 @@ module.exports = {
   // auth0Callback: 'http://localhost:3000/auth/callback',
   // authRedirect: 'http://localhost:3001/#myteam',
   // logoutredirect: 'http://localhost:3001/',
-  PORT: 3001
+  SERVER_PORT: 8000
 }
 
 

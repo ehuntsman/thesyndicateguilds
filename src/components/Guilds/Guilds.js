@@ -14,20 +14,27 @@ export default class Guilds extends Component {
     this.getAllGuilds();
   }
 
-  getAllGuilds() {
-    const url = `http://localhost:3001/api/guilds`;
-    axios.get(url).then(response => {
-      this.setState({
-        guilds: response.data
-      });
-    });
-  }
+  getAllGuilds = () => {
+    axios.get('http://localhost:8000/api/all-guilds')
+        .then((response) => {
+            this.setState({ guilds: response.data })
+            console.log(this.state)
+        })
+        .catch((error) => {
+            console.error("Can't get guilds", error)
+        })
+}
 
   render() {
     console.log(this.state, "state is here")
     return (
       <div>
-        <p>connect database</p>
+        <h1>guild</h1>
+        {this.state.guilds.map((guild, index) => {
+          return (
+            <p>{guild.name}</p>
+          )
+        })}
       </div>
     )
   }
