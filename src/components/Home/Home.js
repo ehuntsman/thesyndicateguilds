@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+
 import './home.css';
 
 class Home extends Component {
@@ -25,6 +26,9 @@ class Home extends Component {
           
         </ul>
         <Link to='/guilds'>guilds</Link>
+
+        <Link to="/user/profile">Profile</Link>
+
       </div>
     )
   }
