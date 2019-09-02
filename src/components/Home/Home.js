@@ -29,6 +29,8 @@ class Home extends Component {
 
         <Link to="/user/profile">Profile</Link>
 
+        <Link to="/login">Login</Link>
+
       </div>
     )
   }
