@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const controller = require('./controller.js');
 const massive = require('massive');
 const cors = require('cors');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
 
 const app = express();
 app.use(cors());
