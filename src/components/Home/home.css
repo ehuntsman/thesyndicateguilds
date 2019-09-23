@@ -1,7 +1,116 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: rgb(70, 131, 185) url("../../resources/Gradient_Full.png")
+    repeat-x;
+  background-attachment: fixed;
+  margin-top: 0px;
+}
+
+.home-container {
+  background-color: rgb(233, 233, 233);
+  position: absolute;
+  width: 1020px;
+  height: 100%;
+  left: 50%;
+  margin-left: -510px;
+  top: 0px;
+}
+
 .home-container h1 {
-  color: red;
+  color: rgb(255, 255, 255);
+}
+
+.home-container h2 {
+  color: rgb(82, 82, 82);
+  margin-top: -10px;
 }
 
 .home-container a {
   display: block;
+}
+
+.page-header {
+  background-color: rgb(70, 70, 70);
+  position: absolute;
+  width: 100%;
+  height: 50px;
+}
+
+.page-header h1 {
+  position: absolute;
+  left: 70px;
+}
+
+.log-section {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  height: 20px;
+  margin-top: -10px;
+}
+
+.menu-button {
+  position: absolute;
+  left: 5px;
+  width: 50px;
+  height: 40px;
+  top: 50%;
+  margin-top: -20px;
+  background: url("../../resources/MenuButton.png") no-repeat center;
+  border-radius: 10px;
+
+  transition: all 0.3s ease;
+}
+
+.menu-button:hover,
+.menu-button:focus {
+  background-color: rgb(99, 99, 99);
+}
+
+.menu-button:active {
+  background-color: rgb(136, 136, 136);
+  transition: 0s;
+}
+
+.menu-container {
+  display: none;
+}
+
+.main-body {
+  position: absolute;
+  top: 50px;
+}
+
+.info-container {
+  margin: 10px;
+  padding: 10px;
+  position: static;
+  border: 5px rgb(70, 70, 70) solid;
+  border-radius: 10px;
+  width: 300px;
+}
+.info-container span {
+  position: relative;
+  display: block;
+  height: 180px;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(70, 70, 70);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background: rgb(70, 70, 70);
+  border: 4px solid transparent;
+  background-clip: content-box;
 }
