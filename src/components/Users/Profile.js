@@ -1,24 +1,82 @@
-import React from "react";
+import React, { useState, Component } from 'react';
+import axios from 'axios';
+import {connect} from 'react-redux';
+import NewUser from "./NewUser";
+import { Redirect } from "react-router-dom";
 import { useAuth0 } from "../../react-auth0-wrapper";
+import AuthCheck from './AuthCheck';
+import {setUser} from '../../ducks/reducer';
 
-const Profile = () => {
-  const { loading, user } = useAuth0();
-
-  if (loading || !user) {
-    return (
-      <div>Loading...</div>
-    );
+class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      new: true,
+      users: [],
+      user: []
+    };
+    this.getAllUsers = this.getAllUsers.bind(this);
+    this.sendUpUser = this.sendUpUser.bind(this);
+    this.checkIfUserExists = this.checkIfUserExists.bind();
+  }
+  componentDidMount(){
+    this.getAllUsers();
   }
 
-  return (
-    <>
-      <img src={user.picture} alt="Profile" />
+  getAllUsers = () => {
+    axios.get('/api/all-users')
+    .then((response) => {
+      this.setState({
+        users: response.data,
+      })
+      this.checkIfUserExists();
+    })
+    .catch((error) => {
+        console.error("Can't get users", error)
+    })
+  }
 
-      <h2>{user.name}</h2>
-      <p>{user.email}</p>
-      <code>{JSON.stringify(user, null, 2)}</code>
-    </>
-  );
-};
+  sendUpUser(user){
+    if(this.state.user !== user){
+      this.setState({
+        user: user
+      })
+    }
+  }
 
-export default Profile;
+  checkIfUserExists(){
+    this.state.users.map( (user) => {
+      console.log("user exsists fired", user)
+      if(user.email === this.state.user.email){
+        this.setState({
+          new: false
+        })
+      }
+    })
+  }
+
+  render () {
+    return (
+      <div>
+        <AuthCheck logged={this.props.setUser} sendUpUser={this.sendUpUser}/>
+        {this.state.new ? "new user or no user" : "old user "}
+        basically, this will check if user exsists
+        if not, create it
+        if so, redirect to profile
+        {this.state.users.map( (user) => {
+          return(
+            <div>{user.email}</div>
+          )
+        })}
+      </div>
+    )
+  }
+}
+
+function mapStateToProps(state){
+  return{
+      currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps, {setUser})(Profile);

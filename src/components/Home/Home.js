@@ -47,10 +47,12 @@ class Home extends Component {
     };
 
     return (
+ 
       <div className="body-container">
         <div className="bg-container"></div>
         <div className="home-container">
           <div className="page-header">
+          <h1>auth test</h1>
             <h1>The Syndicate Web</h1>
             <div className="log-section">
               <button onClick={() => loginWithRedirect({})}>Log in</button>
@@ -60,7 +62,15 @@ class Home extends Component {
           </div>
 
           <div className="menu-container">
+          <ul>
+            <li>users</li>
+            <li>roles</li>
+            <li>Login save user</li>
+            <li>Log out redirect to homepage</li>
+            <li>planes</li>
             <Link to="/guilds">guilds</Link>
+          </ul>
+          <Link to='/guilds'>sections</Link>
 
             <Link to="/user/profile">Profile</Link>
 

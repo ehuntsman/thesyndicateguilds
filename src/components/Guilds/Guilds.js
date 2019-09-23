@@ -16,13 +16,13 @@ export default class Guilds extends Component {
 
   getAllGuilds = () => {
     axios.get('/api/all-guilds')
-        .then((response) => {
-            this.setState({ guilds: response.data })
-            console.log(this.state)
-        })
-        .catch((error) => {
-            console.error("Can't get guilds", error)
-        })
+    .then((response) => {
+        this.setState({ guilds: response.data })
+        console.log(this.state)
+    })
+    .catch((error) => {
+        console.error("Can't get guilds", error)
+    })
 }
 
   render() {

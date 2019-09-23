@@ -24,6 +24,13 @@ massive(CONNECTION_STRING)
 
 app.get('/api/all-guilds', controller.getAllGuilds);
 
+app.get('/api/all-users', controller.getAllUsers);
+app.get('/api/user/:id', controller.getOneUser);
+app.put('/api/user/:id/', controller.updateUser);
+// app.post('/api/all-users', function(req,res){controller.addUser});
+app.post('/api/all-users', controller.addUser);
+
+
 app.listen(SERVER_PORT, () => {
     console.log(`Server connected and running on port ${SERVER_PORT}`)
 })
