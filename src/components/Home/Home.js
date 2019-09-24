@@ -35,71 +35,58 @@ class Home extends Component {
     };
 
     return (
-      <div className="home-container">
-        <div className="page-header">
-          <h1>Syndicate Homepage</h1>
-          <div className="log-section">
-            <button onClick={() => loginWithRedirect({})}>Log in</button>
-            <button onClick={() => logout()}>Log out</button>
-          </div>
-          <div className="menu-button"></div>
-        </div>
-
-        <div className="menu-container">
-          <Link to="/guilds">guilds</Link>
-
-          <Link to="/user/profile">Profile</Link>
-
-          <Link to="/login">Login</Link>
-        </div>
-        <div className="main-body">
-          <div className="info-container">
-            <h2>Welcome {user.realName}!</h2>
-            <ul>
-              <li>Character: {user.characterName}</li>
-              <li>Age: {user.age}</li>
-              <li>Race: {user.race}</li>
-              <li>Guild: {user.guild}</li>
-            </ul>
-            <input
-              type="image"
-              src="../../resources/EditButton.png"
-              alt="edit"
-            />
+      <div className="body-container">
+        <div className="bg-container"></div>
+        <div className="home-container">
+          <div className="page-header">
+            <h1>Syndicate Homepage</h1>
+            <div className="log-section">
+              <button onClick={() => loginWithRedirect({})}>Log in</button>
+              <button onClick={() => logout()}>Log out</button>
+            </div>
+            <div className="menu-button"></div>
           </div>
 
-          <div className="info-container">
-            <h2>Appearance</h2>
-            <ul>
-              <li>Skin: {user.skin}</li>
-              <li>Eyes: {user.eyes}</li>
-              <li>Hair: {user.hair}</li>
-              <li>Height: {user.height}</li>
-              <li>Weight: {user.weight}</li>
-            </ul>
-            <input
-              type="image"
-              src="../../resources/EditButton.png"
-              alt="edit"
-            />
+          <div className="menu-container">
+            <Link to="/guilds">guilds</Link>
+
+            <Link to="/user/profile">Profile</Link>
+
+            <Link to="/login">Login</Link>
           </div>
-          <div className="info-container">
-            <h2>Personality</h2>
-            <span>{user.briefPersonality}</span>
-            <input
-              type="image"
-              src="../../resources/EditButton.png"
-              alt="edit"
-            />
-          </div>
-          <div className="info-container">
-            <h2>Back Story</h2>
-            <span>{user.briefBackstory}</span>
-            <input
-              type="image"
-              src="../../resources/EditButton.png"
-              alt="edit"
-            />
+          <div className="main-body">
+            <div className="info-container">
+              <h2>Welcome {user.realName}!</h2>
+              <ul>
+                <li>Character: {user.characterName}</li>
+                <li>Age: {user.age}</li>
+                <li>Race: {user.race}</li>
+                <li>Guild: {user.guild}</li>
+              </ul>
+              <button onClick="">Edit</button>
+            </div>
+
+            <div className="info-container">
+              <h2>Appearance</h2>
+              <ul>
+                <li>Skin: {user.skin}</li>
+                <li>Eyes: {user.eyes}</li>
+                <li>Hair: {user.hair}</li>
+                <li>Height: {user.height}</li>
+                <li>Weight: {user.weight}</li>
+              </ul>
+              <button onClick="">Edit</button>
+            </div>
+            <div className="info-container">
+              <h2>Personality</h2>
+              <span>{user.briefPersonality}</span>
+              <button onClick="">Edit</button>
+            </div>
+            <div className="info-container">
+              <h2>Back Story</h2>
+              <span>{user.briefBackstory}</span>
+              <button onClick="">Edit</button>
+            </div>
           </div>
         </div>
       </div>

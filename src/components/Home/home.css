@@ -1,23 +1,26 @@
 * {
   padding: 0;
   margin: 0;
+  border: 0;
 }
 
-body {
+.bg-container {
   background: rgb(70, 131, 185) url("../../resources/Gradient_Full.png")
     repeat-x;
-  background-attachment: fixed;
-  margin-top: 0px;
+  background-size: contain;
+  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 
 .home-container {
   background-color: rgb(233, 233, 233);
   position: absolute;
-  width: 1020px;
-  height: 100%;
+  display: block;
   left: 50%;
+  width: 1020px;
   margin-left: -510px;
-  top: 0px;
+  min-height: 100%;
 }
 
 .home-container h1 {
@@ -29,13 +32,18 @@ body {
   margin-top: -10px;
 }
 
+.home-container li {
+  margin-top: -5px;
+}
+
 .home-container a {
   display: block;
 }
 
 .page-header {
-  background-color: rgb(70, 70, 70);
-  position: absolute;
+  background: rgb(70, 70, 70) url("../../resources/Gradient_Full.png") repeat-x;
+  background-size: contain;
+  position: relative;
   width: 100%;
   height: 50px;
 }
@@ -81,8 +89,7 @@ body {
 }
 
 .main-body {
-  position: absolute;
-  top: 50px;
+  position: relative;
 }
 
 .info-container {
@@ -98,6 +105,12 @@ body {
   display: block;
   height: 180px;
   overflow-y: scroll;
+}
+
+.info-container button {
+  border: 2px rgb(70, 70, 70) solid;
+  border-radius: 10px;
+  padding: 2px 20px 2px 20px;
 }
 
 ::-webkit-scrollbar {
