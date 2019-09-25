@@ -92,6 +92,22 @@
   position: relative;
 }
 
+.stats-container {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  top: 60px;
+  left: 350px;
+  border: 5px rgb(70, 70, 70) solid;
+  border-radius: 10px;
+  width: 650px;
+}
+
+.stats-container .info-container {
+  border-width: 3px;
+  width: calc(50% - 46px);
+}
+
 .info-container {
   margin: 10px;
   padding: 10px;

@@ -31,7 +31,19 @@ class Home extends Component {
       briefPersonality:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam tellus, bibendum eu faucibus a, euismod at ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec blandit nec arcu ut efficitur. Nunc pretium mauris mauris, in mollis mauris finibus nec. Aliquam id imperdiet augue. Praesent at eros et velit tempor iaculis at ac tellus. Vestibulum at velit malesuada, imperdiet quam sit amet, finibus sem. Quisque feugiat dui turpis, vel pharetra purus tempor et.",
       briefBackstory:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam tellus, bibendum eu faucibus a, euismod at ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec blandit nec arcu ut efficitur. Nunc pretium mauris mauris, in mollis mauris finibus nec. Aliquam id imperdiet augue. Praesent at eros et velit tempor iaculis at ac tellus. Vestibulum at velit malesuada, imperdiet quam sit amet, finibus sem. Quisque feugiat dui turpis, vel pharetra purus tempor et."
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam quam tellus, bibendum eu faucibus a, euismod at ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec blandit nec arcu ut efficitur. Nunc pretium mauris mauris, in mollis mauris finibus nec. Aliquam id imperdiet augue. Praesent at eros et velit tempor iaculis at ac tellus. Vestibulum at velit malesuada, imperdiet quam sit amet, finibus sem. Quisque feugiat dui turpis, vel pharetra purus tempor et.",
+      totalFavor: 30,
+      availFavor: 15,
+      rasps: 20,
+      level: 4,
+      curHp: 14,
+      curMp: 8,
+      tempHp: 2,
+      tempMp: 0,
+      def: 16,
+      atk: 4,
+      defStance: "Earth",
+      proficiencies: [<li>prof</li>]
     };
 
     return (
@@ -39,7 +51,7 @@ class Home extends Component {
         <div className="bg-container"></div>
         <div className="home-container">
           <div className="page-header">
-            <h1>Syndicate Homepage</h1>
+            <h1>The Syndicate Web</h1>
             <div className="log-section">
               <button onClick={() => loginWithRedirect({})}>Log in</button>
               <button onClick={() => logout()}>Log out</button>
@@ -86,6 +98,34 @@ class Home extends Component {
               <h2>Back Story</h2>
               <span>{user.briefBackstory}</span>
               <button onClick="">Edit</button>
+            </div>
+          </div>
+
+          <div className="stats-container">
+            <div className="info-container">
+              <h2>Stats</h2>
+              <ul>
+                <li>Total Favor: {user.totalFavor}</li>
+                <li>Available Favor: {user.availFavor}</li>
+                <li>Rasps: {user.rasps}</li>
+                <li>Level: {user.level}</li>
+                <li>HP: {user.curHp}</li>
+                <li>MP: {user.curMp}</li>
+                <li>Temp HP: {user.tempHp}</li>
+                <li>Temp MP: {user.tempMp}</li>
+                <li>Defense: {user.def}</li>
+                <li>Attack: {user.atk}</li>
+                <li>Defualt Stance: {user.defStance}</li>
+              </ul>
+              <button onClick="">Spend</button>
+            </div>
+            <div className="info-container">
+              <h2>Proficiencies</h2>
+              <h3>skill_______________________prof</h3>
+              <span>
+                <ul>{user.proficiencies}</ul>
+              </span>
+              <button onClick="">Detail</button>
             </div>
           </div>
         </div>
