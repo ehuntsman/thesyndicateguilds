@@ -13,13 +13,13 @@ class Profile extends Component {
     this.state = {
       new: true,
       users: [],
-      user: [],
-      toggled: false
+      user: []
     };
     this.getAllUsers = this.getAllUsers.bind(this);
     this.sendUpUser = this.sendUpUser.bind(this);
     this.checkIfUserExists = this.checkIfUserExists.bind();
   }
+  
   componentDidMount(){
     this.getAllUsers();
   }
@@ -56,25 +56,14 @@ class Profile extends Component {
     })
   }
 
-  toggleMe(){
-    this.setState({
-      toggled: !this.state.toggled
-    })
-  }
-
   render () {
-    let cake = "standard"
-    if(this.state.toggled){
-      let cake = "toggled-class"
-    }
     return (
-      <div className={this.state.toggled ? "toggled-class" : "standard"}>
+      <div>
         <AuthCheck logged={this.props.setUser} sendUpUser={this.sendUpUser}/>
         {this.state.new ? "new user or no user" : "old user "}
         basically, this will check if user exsists
         if not, create it
         if so, redirect to profile
-        <bitton onClick={(() => this.toggleMe())}
         {this.state.users.map( (user) => {
           return(
             <div>{user.email}</div>

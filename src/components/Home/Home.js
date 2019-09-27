@@ -6,19 +6,10 @@ import { Auth0Context } from "../../react-auth0-wrapper";
 import "./home.css";
 
 class Home extends Component {
-  //runs when the code starts
-  componentDidMount() {
-    //this.function();
-  }
-  //initialize functions here
-
-  // Assign the context type to a static property
-  static contextType = Auth0Context;
-  render(): JSX.Element {
-    // Destructure the values you need from this.context instead of useAuth0
-    const { isAuthenticated, loginWithRedirect, logout } = this.context;
-    let user = {
-      realName: "Syndi-Member",
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {realName: "Syndi-Member",
       characterName: "Bolgona King",
       age: 26,
       race: "Anthousai",
@@ -43,16 +34,27 @@ class Home extends Component {
       def: 16,
       atk: 4,
       defStance: "Earth",
-      proficiencies: [<li>prof</li>]
+      proficiencies: [<li>prof</li>]}
     };
+  }
+  //runs when the code starts
+  componentDidMount() {
+    //this.function();
+  }
+  //initialize functions here
 
+  // Assign the context type to a static property
+  static contextType = Auth0Context;
+  render(): JSX.Element {
+    // Destructure the values you need from this.context instead of useAuth0
+    const { isAuthenticated, loginWithRedirect, logout } = this.context;
+    const { user } = this.state
     return (
  
       <div className="body-container">
         <div className="bg-container"></div>
         <div className="home-container">
           <div className="page-header">
-          <h1>auth test</h1>
             <h1>The Syndicate Web</h1>
             <div className="log-section">
               <button onClick={() => loginWithRedirect({})}>Log in</button>
