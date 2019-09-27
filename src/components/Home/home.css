@@ -84,8 +84,21 @@
   transition: 0s;
 }
 
-.menu-container {
+.closed-menu {
   display: none;
+}
+
+.open-menu {
+  display: block;
+  position: absolute;
+  background-color: white;
+  top: 100%;
+  z-index: 100;
+  padding: 10px;
+}
+
+.open-menu li {
+  font-size: 16pt;
 }
 
 .main-body {
