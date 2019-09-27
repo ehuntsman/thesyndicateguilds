@@ -7,6 +7,7 @@ import Character from "../Character/Character.js";
 import "./home.css";
 
 class Home extends Component {
+<<<<<<< HEAD
   constructor() {
     super();
     this.state = {
@@ -41,12 +42,15 @@ class Home extends Component {
       }
     };
     this.ToggleMenu = this.ToggleMenu.bind(this);
+=======
+>>>>>>> 5fc8848c44e940f278f1afe135ef45878f0f327e
   }
   //runs when the code starts
   componentDidMount() {
     //this.function();
   }
   //initialize functions here
+<<<<<<< HEAD
 
   ToggleMenu() {
     this.setState({
@@ -60,7 +64,15 @@ class Home extends Component {
     // Destructure the values you need from this.context instead of useAuth0
     const { isAuthenticated, loginWithRedirect, logout } = this.context;
     let user = this.state.user;
+=======
+>>>>>>> 5fc8848c44e940f278f1afe135ef45878f0f327e
 
+  // Assign the context type to a static property
+  static contextType = Auth0Context;
+  render(): JSX.Element {
+    // Destructure the values you need from this.context instead of useAuth0
+    const { isAuthenticated, loginWithRedirect, logout } = this.context;
+    const { user } = this.state
     return (
       <div className="body-container">
         <div className="bg-container"></div>
