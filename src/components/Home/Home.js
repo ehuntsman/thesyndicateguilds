@@ -3,15 +3,17 @@ import { Link } from "react-router-dom";
 // Import Auth0Context instead of useAuth0
 import { Auth0Context } from "../../react-auth0-wrapper";
 import Character from "../Character/Character.js";
+import Guilds from "../Guilds/Guilds.js";
+import Profile from "../Users/Profile.js";
 
 import "./home.css";
 
 class Home extends Component {
-<<<<<<< HEAD
   constructor() {
     super();
     this.state = {
-      MenuToggled: false,
+      menuToggled: false,
+      page: "character",
       user: {
         realName: "Syndi-Member",
         characterName: "Bolgona King",
@@ -42,20 +44,29 @@ class Home extends Component {
       }
     };
     this.ToggleMenu = this.ToggleMenu.bind(this);
-=======
->>>>>>> 5fc8848c44e940f278f1afe135ef45878f0f327e
+    this.ChangePage = this.ChangePage.bind(this);
   }
   //runs when the code starts
   componentDidMount() {
     //this.function();
   }
   //initialize functions here
-<<<<<<< HEAD
 
   ToggleMenu() {
     this.setState({
-      MenuToggled: !this.state.MenuToggled
+      menuToggled: !this.state.menuToggled
     });
+  }
+
+  ChangePage(a) {
+    if (typeof a == "string") {
+      this.setState({
+        page: a,
+        menuToggled: false
+      });
+    } else {
+      console.log("Invalid Input on ChangePage function");
+    }
   }
 
   // Assign the context type to a static property
@@ -63,51 +74,68 @@ class Home extends Component {
   render(): JSX.Element {
     // Destructure the values you need from this.context instead of useAuth0
     const { isAuthenticated, loginWithRedirect, logout } = this.context;
-    let user = this.state.user;
-=======
->>>>>>> 5fc8848c44e940f278f1afe135ef45878f0f327e
+    const { user } = this.state;
 
-  // Assign the context type to a static property
-  static contextType = Auth0Context;
-  render(): JSX.Element {
-    // Destructure the values you need from this.context instead of useAuth0
-    const { isAuthenticated, loginWithRedirect, logout } = this.context;
-    const { user } = this.state
+    let currentPage;
+
+    switch (this.state.page) {
+      case "character":
+        currentPage = <Character user={user} />;
+        break;
+      case "guilds":
+        currentPage = <Guilds user={user} />;
+        break;
+      case "profile":
+        currentPage = <Profile user={user} />;
+        break;
+      default:
+        currentPage = <Character user={user} />;
+        break;
+    }
+
     return (
       <div className="body-container">
         <div className="bg-container"></div>
         <div className="home-container">
-          <div className="page-header">
+          <div
+            className="page-header"
+            onMouseLeave={() => this.setState({ menuToggled: false })}
+          >
             <h1>The Syndicate Web</h1>
             <div className="log-section">
               <button onClick={() => loginWithRedirect({})}>Log in</button>
               <button onClick={() => logout()}>Log out</button>
             </div>
             <button className="menu-button" onClick={() => this.ToggleMenu()} />
-            <div
-              className={this.state.MenuToggled ? "open-menu" : "closed-menu"}
-            >
+            <div className={this.state.menuToggled ? "open-menu" : "hidden"}>
               <ul>
                 <li>
-                  <Link to="">Character</Link>
+                  <button onClick={() => this.ChangePage("character")}>
+                    Character
+                  </button>
                 </li>
                 <li>roles</li>
                 <li>Login save user</li>
                 <li>Log out redirect to homepage</li>
                 <li>planes</li>
                 <li>
-                  <Link to="/guilds">guilds</Link>
+                  <button onClick={() => this.ChangePage("guilds")}>
+                    guilds
+                  </button>
                 </li>
                 <li>
-                  <Link to="/user/profile">Profile</Link>
+                  <button onClick={() => this.ChangePage("profile")}>
+                    Profile
+                  </button>
                 </li>
                 <li>
-                  <Link to="/login">Login</Link>
+                  <button onClick={() => loginWithRedirect({})}>Login</button>
                 </li>
               </ul>
             </div>
           </div>
-          <Character user={user} />
+
+          {currentPage}
         </div>
       </div>
     );

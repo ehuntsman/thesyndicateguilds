@@ -74,7 +74,7 @@ class Profile extends Component {
         basically, this will check if user exsists
         if not, create it
         if so, redirect to profile
-        <bitton onClick={(() => this.toggleMe())}
+        <bitton onClick={(() => this.toggleMe())}/>
         {this.state.users.map( (user) => {
           return(
             <div>{user.email}</div>

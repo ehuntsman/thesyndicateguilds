@@ -4,6 +4,10 @@
   border: 0;
 }
 
+button {
+  outline: 0 none;
+}
+
 .bg-container {
   background: rgb(70, 131, 185) url("../../resources/Gradient_Full.png")
     repeat-x;
@@ -84,7 +88,7 @@
   transition: 0s;
 }
 
-.closed-menu {
+.hidden {
   display: none;
 }
 
