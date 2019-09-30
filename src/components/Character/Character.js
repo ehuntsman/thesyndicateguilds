@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { type } from "os";
+import Overlay from "./Overlay.js";
 
-export default class Guilds extends Component {
+export default class Character extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,16 +23,35 @@ export default class Guilds extends Component {
 
   render() {
     const user = this.props.user;
+    const proficiencies = user.proficiencies.map(d => (
+      <li key={d.name}>
+        {d.name}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {d.prof}
+      </li>
+    ));
 
     let currentOverlay;
 
     switch (this.state.overlayName) {
       case "basicInfo":
+        currentOverlay = <Overlay type="basicInfo" />;
+        break;
       case "appearance":
+        currentOverlay = <Overlay type="appearance" />;
+        break;
       case "personality":
+        currentOverlay = <Overlay type="personality" />;
+        break;
       case "backstory":
+        currentOverlay = <Overlay type="backstory" />;
+        break;
       case "favor":
+        currentOverlay = <Overlay type="favor" />;
+        break;
       case "proficiencies":
+        currentOverlay = <Overlay type="proficiencies" />;
+        break;
     }
 
     return (
@@ -95,7 +115,47 @@ export default class Guilds extends Component {
             <h2>Proficiencies</h2>
             <h3>skill_______________________prof</h3>
             <span>
-              <ul>{user.proficiencies}</ul>
+              <ul>{proficiencies}</ul>
+            </span>
+            <button onClick={() => this.OpenOverlay("Proficiencies")}>
+              Detail
+            </button>
+          </div>
+          <div className="info-container">
+            <h2>Abilities</h2>
+            <h3>skill_______________________prof</h3>
+            <span>
+              <ul>{proficiencies}</ul>
+            </span>
+            <button onClick={() => this.OpenOverlay("Proficiencies")}>
+              Detail
+            </button>
+          </div>
+          <div className="info-container">
+            <h2>Spellbook</h2>
+            <h3>skill_______________________prof</h3>
+            <span>
+              <ul>{proficiencies}</ul>
+            </span>
+            <button onClick={() => this.OpenOverlay("Proficiencies")}>
+              Detail
+            </button>
+          </div>
+          <div className="info-container">
+            <h2>Equipment</h2>
+            <h3>skill_______________________prof</h3>
+            <span>
+              <ul>{proficiencies}</ul>
+            </span>
+            <button onClick={() => this.OpenOverlay("Proficiencies")}>
+              Detail
+            </button>
+          </div>
+          <div className="info-container">
+            <h2>Items</h2>
+            <h3>skill_______________________prof</h3>
+            <span>
+              <ul>{proficiencies}</ul>
             </span>
             <button onClick={() => this.OpenOverlay("Proficiencies")}>
               Detail

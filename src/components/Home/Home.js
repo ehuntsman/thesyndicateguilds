@@ -40,17 +40,42 @@ class Home extends Component {
         def: 16,
         atk: 4,
         defStance: "Earth",
-        proficiencies: [<li>prof</li>]
+        proficiencies: [
+          {
+            name: "blank",
+            prof: 5,
+            description: "dolor ipsum and all that jazz"
+          }
+        ]
       }
     };
     this.ToggleMenu = this.ToggleMenu.bind(this);
     this.ChangePage = this.ChangePage.bind(this);
+    this.GenerateForTesting = this.GenerateForTesting.bind(this);
   }
   //runs when the code starts
-  componentDidMount() {
+  componentWillMount() {
     //this.function();
+    this.GenerateForTesting(50);
   }
   //initialize functions here
+
+  GenerateForTesting(num) {
+    let temparray = [];
+    for (var i = 1; i <= num; i++) {
+      temparray.push({
+        name: "blank" + i,
+        prof: 5,
+        description: "dolor ipsum and all that jazz"
+      });
+    }
+    this.state.user.proficiencies = temparray;
+
+    temparray = [];
+    for (var i = 1; i <= num; i++) {
+      temparray.push(<li></li>);
+    }
+  }
 
   ToggleMenu() {
     this.setState({
